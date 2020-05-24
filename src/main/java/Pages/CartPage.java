@@ -1,4 +1,4 @@
-package Framework.Pages;
+package Pages;
 
 public class CartPage {
 }

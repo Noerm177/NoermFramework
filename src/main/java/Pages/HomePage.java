@@ -7,16 +7,21 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class HomePage {
 
     WebDriver driver;
+    WebDriverWait wait;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        wait = new WebDriverWait(driver, 15);
     }
+    
 
     // Locates
     @FindBy(css = "nav#uhf-g-nav > .js-paddle-items")
@@ -44,6 +49,13 @@ public class HomePage {
 
     @FindBy(id = "l1_support")
     WebElement supportText;
+
+    public void goToWindows() {
+        String url = "https://www.microsoft.com/en-us/windows/";
+        winText.click();
+        wait.until(ExpectedConditions.urlToBe(url));
+        System.out.println( "\n On page :  " + driver.getCurrentUrl());
+    }
 
     public void getTextOffice() {
         String realOffice = officeText.getAttribute("innerText");

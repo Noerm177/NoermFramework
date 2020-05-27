@@ -1,6 +1,7 @@
 package tests;
 
 import Pages.HomePage;
+import Pages.WindowsPage;
 import org.testng.annotations.Test;
 
 
@@ -16,8 +17,14 @@ public class HomeStringsTest extends TestBase {
         HP.getXboxText();
         HP.getDealsText();
         HP.getSupportText();
-        
-        //Assert.assertEquals(ActualValue,"Office");
+        HP.goToWindows();    
     }
+
+    @Test
+    public void TestWin10() {
+        WindowsPage WP = new WindowsPage(driver);
+        WP.printDropWin();
+    }
+
 
 }
